@@ -4,10 +4,10 @@ const url = require('url');
 
 // ✅ ИСПОЛЬЗУЕМ ПЕРЕМЕННЫЕ ОКРУЖЕНИЯ RAILWAY
 const db = mysql.createPool({
-    host: process.env.MYSQLHOST || 'localhost',
-    user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || '',
-    database: process.env.MYSQLDATABASE || 'salut',
+    host: process.env.MYSQLHOST || 'FVH2.spaceweb.ru.',
+    user: process.env.MYSQLUSER || 'phaetonstu',
+    password: process.env.MYSQLPASSWORD || 'A5EWXDLtUHH18WG$',
+    database: process.env.MYSQLDATABASE || 'phaetonstu',
     port: process.env.MYSQLPORT || 3306
 });
 
