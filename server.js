@@ -2,15 +2,18 @@ const WebSocket = require('ws');
 const mysql = require('mysql2');
 const url = require('url');
 
+// ✅ ИСПОЛЬЗУЕМ ПЕРЕМЕННЫЕ ОКРУЖЕНИЯ RAILWAY
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'salut'
+    host: process.env.MYSQLHOST || 'localhost',
+    user: process.env.MYSQLUSER || 'root',
+    password: process.env.MYSQLPASSWORD || '',
+    database: process.env.MYSQLDATABASE || 'salut',
+    port: process.env.MYSQLPORT || 3306
 });
 
-// ✅ ПОРТ 3000
-const wss = new WebSocket.Server({ port: 3000 });
+// ✅ Railway сам назначит порт через переменную PORT
+const PORT = process.env.PORT || 3000;
+const wss = new WebSocket.Server({ port: PORT });
 const clients = new Map();
 
 wss.on('connection', (ws, req) => {
@@ -189,4 +192,4 @@ function broadcastOnlineStatus(userId, isOnline) {
     }
 }
 
-console.log('🚀 WebSocket сервер запущен на порту 3000');
+console.log(`🚀 WebSocket сервер запущен на порту ${PORT}`);
